@@ -1,0 +1,55 @@
+
+.ant-layout-header
+{
+    background: rgb(255, 255, 255) !important;
+    padding: 0 !important;
+}
+
+.ant-layout
+{
+    height: 780px;
+    width: 100%;
+}
+
+#root, body, html
+{
+    height: 100%;
+    width: 100%;
+    overflow-x: hidden;
+}
+
+.ant-layout-sider
+{
+    background: rgb(255, 255, 255) !important;
+    padding: 0 !important;
+    margin-left: 100px;
+}
+
+
+.ant-layout-content
+{
+    margin-left: 200px;
+    padding-left: 20px;
+    padding-top: 20px;
+    padding-right: 200px;
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+}
+
+.HomeCarousel
+{
+    padding-top: 10px;
+    height: 40%;
+}
+
+.BookCard
+{
+    position: relative;
+}
+
+.SearchBar
+{
+    margin-top: 20px;
+    margin-bottom: 20px;
+}

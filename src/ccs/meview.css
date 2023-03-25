@@ -1,0 +1,63 @@
+
+.ant-layout-header
+{
+    background: rgb(255, 255, 255) !important;
+    padding: 0 !important;
+}
+
+.ant-layout
+{
+    height: 780px;
+    width: 100%;
+}
+
+#root, body, html
+{
+    height: 100%;
+    width: 100%;
+    overflow-x: hidden;
+}
+
+.ant-layout-sider
+{
+    background: rgb(255, 255, 255) !important;
+    padding: 0 !important;
+    margin-left: 200px;
+}
+
+
+.ant-layout-content
+{
+    margin-left: 400px;
+    padding-left: 20px;
+    padding-top: 20px;
+    padding-right: 20px;
+    display: flex;
+    flex-direction: column;
+}
+
+.me
+{
+    text-align: left;
+    padding-top: 20px;
+    padding-left: 20px;
+}
+
+.title
+{
+    font-family: 华文琥珀;
+    font-size: 20px;
+    font-weight: bold;
+}
+
+.profiletitle
+{
+    font-family: 华文琥珀;
+    font-size: 40px;
+    font-weight: bold;
+}
+
+.buttons
+{
+    margin-left: 50px;
+}
