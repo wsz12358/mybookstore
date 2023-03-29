@@ -9,8 +9,8 @@ export class SideBar extends React.Component
     render() {
 
        return <div id = "mySider">
-           <Sider>5
-               {/*<UseMenu />*/}
+           <Sider>
+               <UseMenu />
            </Sider>
        </div>
     }

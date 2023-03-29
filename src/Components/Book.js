@@ -9,7 +9,10 @@ export class Book extends React.Component
             const info = this.props.info;
 
             return <Link to={{
-                pathname: '/details'}}
+                pathname: '/details',
+                search: '?id=' + info.id,
+                state: info.id
+            }}
                   target="_blank"
             >
                 <Card

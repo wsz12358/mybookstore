@@ -31,7 +31,7 @@
     margin-left: 400px;
     padding-left: 20px;
     padding-top: 20px;
-    padding-right: 20px;
+    padding-right: 200px;
     display: flex;
     flex-direction: column;
     text-align: center;
@@ -52,6 +52,11 @@
 .details
 {
     margin-left: 50px;
+}
+
+.introduction
+{
+    width: 100%;
 }
 
 
