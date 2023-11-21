@@ -4,6 +4,7 @@ import {HeaderInfo} from "../Components/HeaderInfo";
 import "../ccs/cartview.css"
 import {SideBar} from "../Components/SideBar";
 import {Cart} from "../Components/Cart";
+import {AddOrders} from "../Service/OrderService";
 
 const {Header,Content} = Layout;
 export class CartView extends React.Component{
@@ -22,6 +23,8 @@ export class CartView extends React.Component{
                         </div>
                         <div className={"cartcontent cart"}>
                             <Cart />
+                        </div>
+                        <div className={"cartcontent purchse"}>
                         </div>
                     </Content>
                 </Layout>

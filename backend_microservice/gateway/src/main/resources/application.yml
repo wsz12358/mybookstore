@@ -1,0 +1,28 @@
+
+spring:
+  cloud:
+    nacos:
+      discovery:
+        server-addr: 127.0.0.1:8848
+
+    gateway:
+      routes:
+      - id: bookstore-main-center
+        uri: lb://bookstore-main-center
+        predicates:
+          - Path=/book/**, /cart/**, /log/**, /order/**
+      - id: bookstore-author-center
+        uri: lb://bookstore-author-center
+        predicates:
+          - Path=/author/**
+      - id: bookstore-main-center-ws
+        uri: lb:ws://bookstore-main-center
+        predicates:
+          - Path=/ws/transfer/**
+
+server:
+  port: 8080
+#  ssl:
+#    key-store: classpath:ssl.jks
+#    key-password: 123123
+#    keyStoreType: jks

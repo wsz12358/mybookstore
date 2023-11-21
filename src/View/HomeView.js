@@ -22,9 +22,6 @@ export class HomeView extends React.Component{
                         <div className={"content HomeCarousel"}>
                             <HomeCarousel />
                         </div>
-                        <div className={"content SearchBar"}>
-                            <SearchBar />
-                        </div>
                         <div className = {"content BookCard"}>
                             <BookList />
                         </div>

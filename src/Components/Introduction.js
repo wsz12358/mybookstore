@@ -4,7 +4,8 @@ import {Descriptions} from "antd";
 export class Introduction extends React.Component
 {
     render() {
-        const info = this.props.info;
+        const info = this.props.info.book;
+
         return<div>
 
             <Descriptions bordered column = {1}>

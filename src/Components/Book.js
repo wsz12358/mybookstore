@@ -10,8 +10,8 @@ export class Book extends React.Component
 
             return <Link to={{
                 pathname: '/details',
-                search: '?id=' + info.id,
-                state: info.id
+                search: '?id=' + info.bookId,
+                state: info.bookId
             }}
                   target="_blank"
             >

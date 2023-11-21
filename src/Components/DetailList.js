@@ -4,7 +4,7 @@ import {Descriptions} from "antd";
 export class DetailList extends React.Component
 {
     render() {
-        const info = this.props.info;
+        const info = this.props.info.book;
         return<div>
             <Descriptions title = "book info" bordered column = {1} style = {{width: 500}}>
                 <Descriptions.Item label = "title">{info.name}</Descriptions.Item>

@@ -7,6 +7,8 @@ import {DetailList} from "../Components/DetailList";
 import {BookCover} from "../Components/BookCover";
 import {Introduction} from "../Components/Introduction";
 import {useLocation} from "react-router-dom";
+import {getBook} from "../Service/BookService";
+import {AddCarts} from "../Service/CartService";
 
 const {Header,Content} = Layout;
 
@@ -110,45 +112,97 @@ const data1 = [
         description: "也译“动物庄园”，是“一代人的冷峻良知”乔治·奥威尔经典的讽喻之作。虽然这一场荒诞的动物革命走向歧途，但正是因为这样我们才了解“把权力关进制度的笼子”的重要性。"
     }
     ]
-export const BookView = () => {
 
 
-       const query = useLocation();
-       let bookInfo = data1[0];
-        for (var i = 0; i < data1.length; i++)
-        {
-            if (data1[i].id == query.search.substr(4))
+function withMyHook(Component) {
+    return function WrappedComponent(props) {
+        const myHookValue = useLocation();
+        return <Component {...props} myHookValue={myHookValue} />;
+    }
+}
+
+export class BookView extends React.Component {
+
+    constructor(props) {
+        super(props);
+        this.state = {book: data1[0]};
+    }
+
+    componentDidMount() {
+        const query = this.props.myHookValue;
+        const arr = query.search;
+        const bookId = arr.substr(4);
+        const callback = (data) => {
+            this.setState({book: data});
+        };
+        getBook(bookId, callback);
+    }
+
+
+    render() {
+        const mystorage = localStorage;
+
+        const onClick = (e) => {
+            // let temp = mystorage.getItem('books');
+            // if (temp != "[]")
+            // {
+            //     temp = JSON.parse(temp);
+            //     temp.push(this.state.book);
+            //
+            //     mystorage.setItem('books', JSON.stringify(temp));
+            //     let temp1 = JSON.parse(mystorage.getItem('books'));
+            // }
+            // else
+            // {
+            //     let books = [];
+            //     books.push(this.state.book);
+            //     mystorage.setItem('books', JSON.stringify(books));
+            //  }
+            console.log(this.state.book);
+            let temp =
+                {
+                    book: this.state.book.bookId,
+                    purchasenum: 1,
+                    userauthid: JSON.parse(window.localStorage.getItem("user")).userId
+                };
+            console.log(temp);
+            const callback = () =>
             {
-                bookInfo = data1[i];
+
             }
+            AddCarts(temp, callback);
         }
 
+
         return <div>
-                    <Layout>
-                        <Header>
-                            <HeaderInfo />
-                        </Header>
-                        <Layout>
-                            <SideBar />
-                            <Content>
-                                <div className={"detailcontent cover_details"}>
-                                    <div className={"cover"}>
-                                        <BookCover info = {bookInfo}/>
-                                    </div>
-                                    <div className={"details"}>
-                                        <DetailList info = {bookInfo}/>
-                                    </div>
-                                </div>
-                                <div className={"detailcontent introduction"}>
-                                    <Introduction info = {bookInfo}/>
-                                </div>
-                                <div className={"detailcontent buttons"}>
-                                    <Button> Back </Button>
-                                    <Button> Add to cart </Button>
-                                    <Button> Purchase now </Button>
-                                </div>
-                            </Content>
-                        </Layout>
-                    </Layout>
-                </div>
+            <Layout>
+                <Header>
+                    <HeaderInfo/>
+                </Header>
+                <Layout>
+                    <SideBar/>
+                    <Content>
+                        <div className={"detailcontent cover_details"}>
+                            <div className={"cover"}>
+                                <BookCover info={this.state}/>
+                            </div>
+                            <div className={"details"}>
+                                <DetailList info={this.state}/>
+                            </div>
+                        </div>
+                        <div className={"detailcontent introduction"}>
+                            <Introduction info={this.state}/>
+                        </div>
+                        <div className={"detailcontent buttons"}>
+                            <Button> Back </Button>
+                            <Button onClick={onClick}> Add to cart </Button>
+                            <Button> Purchase now </Button>
+                        </div>
+                    </Content>
+                </Layout>
+            </Layout>
+        </div>
+    }
 }
+
+BookView = withMyHook(BookView);
